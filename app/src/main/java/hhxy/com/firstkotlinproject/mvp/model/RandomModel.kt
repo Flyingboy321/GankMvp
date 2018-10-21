@@ -15,6 +15,7 @@ class RandomModel
 constructor(private val api: GankApi) : RandomContract.Model {
     override fun getRandom(type: String): Observable<JsonResult<List<FuckGoods>>> {
         return api.getRandom(type)
+//        测试git
     }
 
 }
