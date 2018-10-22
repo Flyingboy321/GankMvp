@@ -16,9 +16,9 @@ data class FuckGoods(
         val who: String
 ) {
     fun hasImg(): Boolean {
-        return images != null
+        return images != null && images.isNotEmpty()
     }
 
-    fun create() = createdAt.substring(0, 10)
+    fun createTime() = createdAt.substring(0, 10)
 
 }
