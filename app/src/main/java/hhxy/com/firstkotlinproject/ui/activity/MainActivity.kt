@@ -4,6 +4,8 @@ import android.databinding.DataBindingUtil
 import android.os.Bundle
 import android.os.PersistableBundle
 import android.support.v4.app.Fragment
+import android.support.v4.app.FragmentPagerAdapter
+import android.support.v4.view.ViewPager
 import android.support.v7.app.AppCompatActivity
 import android.view.View
 import hhxy.com.firstkotlinproject.R
@@ -41,7 +43,19 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
      * */
     override fun initView() {
         initFragments()
-        getMainComponent().plus(RandomModule(this)).inject(this);
+        getMainComponent().plus(RandomModule(this)).inject(this)
+        viewPager.adapter = object : FragmentPagerAdapter(supportFragmentManager) {
+            override fun getItem(position: Int): Fragment {
+                return mFragments[position]
+            }
+
+            override fun getCount(): Int {
+                return mFragments.size
+            }
+
+        }
+        viewPager.offscreenPageLimit = 4
+
         navigationView.setOnNavigationItemSelectedListener { item ->
             var tab = 0
             when (item.itemId) {
@@ -51,6 +65,7 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
                 R.id.menu_about -> tab = 3
             }
             item.isChecked = true
+            viewPager.currentItem = tab
             false
         }
         floatingButton.setOnClickListener(object : View.OnClickListener {
@@ -59,14 +74,29 @@ class MainActivity : BaseBindingActivity<ActivityMainBinding>(), RandomContract.
             }
 
         })
+
+        viewPager.addOnPageChangeListener(object : ViewPager.OnPageChangeListener {
+            override fun onPageScrollStateChanged(state: Int) {
+            }
+
+            override fun onPageScrolled(position: Int, positionOffset: Float, positionOffsetPixels: Int) {
+            }
+
+            override fun onPageSelected(position: Int) {
+                navigationView.menu.getItem(position).isChecked = true
+            }
+
+        })
+
+
     }
 
     private fun initFragments() {
         mFragments = ArrayList()
-        mFragments.add(AndroidFragment.Companion.newInstance())
-        mFragments.add(IOSFragment.Companion.newInstance())
-        mFragments.add(GirlFragment.Companion.newInstance())
-        mFragments.add(AboutFragment.Companion.newInstance())
+        mFragments.add(AndroidFragment.newInstance())
+        mFragments.add(IOSFragment.newInstance())
+        mFragments.add(GirlFragment.newInstance())
+        mFragments.add(AboutFragment.newInstance())
     }
 
     override fun onRandom(goods: FuckGoods) {

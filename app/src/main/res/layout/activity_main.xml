@@ -9,6 +9,14 @@
         android:background="#fff"
         tools:context=".ui.activity.MainActivity">
 
+        <android.support.v4.view.ViewPager
+            android:id="@+id/viewPager"
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:background="#ffffff">
+
+        </android.support.v4.view.ViewPager>
+
 
         <android.support.design.widget.BottomNavigationView
             android:id="@+id/navigationView"

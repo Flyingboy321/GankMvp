@@ -12,14 +12,28 @@ import java.util.*
  */
 interface GankApi {
 
-    @GET("data/Android/10/{page}")
-    fun getAndroidData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>
-
     /**
      * 获取随机数据
      * */
     @GET("random/data/{type}/1")
     fun getRandom(@Path("type") type: String): Observable<JsonResult<List<FuckGoods>>>
 
+    /**
+     * 获取android所有数据
+     * */
+    @GET("data/Android/10/{page}")
+    fun getAndroidData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>
+
+    /**
+     * 获取ios所有数据
+     * */
+    @GET("data/iOS/10/{page}")
+    fun getIOSData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>
+
+    /**
+     * 获取福利所有数据
+     * */
+    @GET("data/福利/10/{page}")
+    fun getCirlData(@Path("page") page: Int): Observable<JsonResult<List<FuckGoods>>>
 
 }

@@ -16,4 +16,7 @@ interface ApiComponent {
     fun inject(app: App)
     //    获取扩展子类component方法
     fun plus(randomModule: RandomModule): RandomComponent
+
+    //    扩展fuck模块component，目的注入view层对象
+    fun plus(fuckGoodsModule: FuckGoodsModule): FuckGoodsComponent
 }
