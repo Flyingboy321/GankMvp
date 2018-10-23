@@ -8,13 +8,6 @@
         android:background="#fff"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:layout_gravity="center_horizontal"
-            android:text="android===fragment" />
-
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_android_list"
             android:layout_width="match_parent"

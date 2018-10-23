@@ -7,12 +7,6 @@
         android:background="#fff"
         android:orientation="vertical">
 
-        <TextView
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:textColor="#f00"
-            android:layout_gravity="center_horizontal"
-            android:text="girl===fragment" />
 
         <android.support.v7.widget.RecyclerView
             android:id="@+id/rv_girl_list"

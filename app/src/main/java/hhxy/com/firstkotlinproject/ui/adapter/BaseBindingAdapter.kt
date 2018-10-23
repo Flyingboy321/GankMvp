@@ -13,7 +13,13 @@ abstract class BaseBindingAdapter<T : ViewDataBinding> : RecyclerView.Adapter<Da
 
     lateinit var mListener: OnItemClickListener
     override fun onBindViewHolder(holder: DataBoundViewHolder<T>, position: Int) {
-        holder.mbinding.root.setOnClickListener { v -> mListener!!.itemClick(v, position) }
+        holder.mbinding.root.setOnClickListener {
+            View.OnClickListener { v ->
+                if (mListener != null) {
+                    mListener.itemClick(v, position)
+                }
+            }
+        }
     }
 
     interface OnItemClickListener {

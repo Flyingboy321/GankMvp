@@ -27,7 +27,7 @@ class FuckGoodsPresenter @Inject constructor(val mModel: FuckGoodsModel,
                     }
 
                     override fun onNext(value: JsonResult<List<FuckGoods>>) {
-                        if (!value.error) {
+                        if (!value.error && value.results.isNotEmpty()) {
                             mView.setData(value.results)
                         } else {
                             Log.e("okhttp", "json格式异常")
