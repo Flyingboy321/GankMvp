@@ -2,8 +2,8 @@ package hhxy.com.firstkotlinproject.ui.adapter
 
 import android.databinding.ViewDataBinding
 import android.support.v7.widget.RecyclerView
+import android.util.Log
 import android.view.View
-import android.view.ViewGroup
 
 /**
  * Created by Administrator on 2018/10/22.
@@ -13,13 +13,14 @@ abstract class BaseBindingAdapter<T : ViewDataBinding> : RecyclerView.Adapter<Da
 
     lateinit var mListener: OnItemClickListener
     override fun onBindViewHolder(holder: DataBoundViewHolder<T>, position: Int) {
-        holder.mbinding.root.setOnClickListener {
-            View.OnClickListener { v ->
+        holder.itemView.setOnClickListener(object : View.OnClickListener {
+            override fun onClick(v: View) {
                 if (mListener != null) {
                     mListener.itemClick(v, position)
                 }
             }
-        }
+
+        })
     }
 
     interface OnItemClickListener {

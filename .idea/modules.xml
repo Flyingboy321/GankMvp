@@ -2,8 +2,10 @@
 <project version="4">
   <component name="ProjectModuleManager">
     <modules>
+      <module fileurl="file://$PROJECT_DIR$/GankMvp.iml" filepath="$PROJECT_DIR$/GankMvp.iml" />
       <module fileurl="file://$PROJECT_DIR$/app/app.iml" filepath="$PROJECT_DIR$/app/app.iml" />
-      <module fileurl="file://$PROJECT_DIR$/firstkotlinproject.iml" filepath="$PROJECT_DIR$/firstkotlinproject.iml" />
+      <module fileurl="file://F:\github\GankMvp\firstkotlinproject.iml" filepath="F:\github\GankMvp\firstkotlinproject.iml" />
+      <module fileurl="file://$PROJECT_DIR$/javatestlibrary/javatestlibrary.iml" filepath="$PROJECT_DIR$/javatestlibrary/javatestlibrary.iml" />
     </modules>
   </component>
 </project>

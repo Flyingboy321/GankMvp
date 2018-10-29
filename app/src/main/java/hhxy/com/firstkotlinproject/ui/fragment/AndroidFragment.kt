@@ -49,8 +49,15 @@ class AndroidFragment : BaseBindingFragment<FragmentViewRecyclerBinding>(), Fuck
     override fun initView() {
 
         mAdapter = FuckGoodsAdapter(mList, activity)
+
         context.getMainComponent().plus(FuckGoodsModule(this)).inject(this)
 
+        mAdapter.setOnItemClickListener(object : BaseBindingAdapter.OnItemClickListener {
+            override fun itemClick(view: View, position: Int) {
+                context.toast("条目点击了$position")
+            }
+
+        })
         with(mBinding) {
             rvAndroidList.adapter = mAdapter
             rvAndroidList.layoutManager = LinearLayoutManager(context)
@@ -67,12 +74,7 @@ class AndroidFragment : BaseBindingFragment<FragmentViewRecyclerBinding>(), Fuck
         }
 
         mPresenter.getData(mPage, ANDROID)
-        mAdapter.setOnItemClickListener(object : BaseBindingAdapter.OnItemClickListener {
-            override fun itemClick(view: View, position: Int) {
-                context.toast("条目点击了$position")
-            }
 
-        })
 
     }
 
